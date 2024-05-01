@@ -6,7 +6,7 @@ local Posiones = Window:NewSection("Posiones")
 
 local a = false
 
-Section:CreateToggle("Matar entidad", function()
+Section:CreateToggle("Matar muñeco de las nieves", function()
     a = not a
     while a do
         local args = {
