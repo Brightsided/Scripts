@@ -1,6 +1,6 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/wizard"))()
 
-local Window = Library:NewWindow("Test (No me pidas mucho xD)")
+local Window = Library:NewWindow("Limited Catchers")
 local Section = Window:NewSection("Matar")
 local Posiones = Window:NewSection("Posiones")
 local FarmingSection = Window:NewSection("Farming")
