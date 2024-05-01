@@ -3,10 +3,11 @@ local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/blood
 local Window = Library:NewWindow("Test (No me pidas mucho xD)")
 local Section = Window:NewSection("Matar")
 local Posiones = Window:NewSection("Posiones")
+local FarmingSection = Window:NewSection("Farming")
 
 local a = false
 
-Section:CreateToggle("Matar muñeco de las nieves", function()
+Section:CreateToggle("Matar entidad", function()
     a = not a
     while a do
         local args = {
@@ -126,3 +127,32 @@ Posiones:CreateToggle("Posion de daño 1", function()
     end
 end)
 
+local function farmLimiteds()
+    local limiteds = workspace:WaitForChild("Farmear monedas y gemas(Lag)")
+    for _, limited in ipairs(limiteds:GetChildren()) do
+        if limited:FindFirstChild("Handle") then
+            local args = {
+                [1] = limited.Handle,
+                [2] = Vector3.new(-0.3583495020866394, -0, 0.933587908744812)
+            }
+
+            game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("sendPet"):FireServer(unpack(args))
+        end
+    end
+end
+
+FarmingSection:CreateToggle("Farmear monedas y gemas(Puede lagear)", function(value)
+    isFarming = value
+
+    if isFarming then
+        local connection
+        connection = game:GetService("RunService").Stepped:Connect(function()
+            if not isFarming then
+                connection:Disconnect() 
+                return
+            end
+
+            farmLimiteds()  
+        end)
+    end
+end)
