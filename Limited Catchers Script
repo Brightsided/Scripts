@@ -1,14 +1,14 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/wizard"))()
 
-local Window = Library:NewWindow("Limited Catchers")
+local Window = Library:NewWindow("Limited Catchers!")
 local Section = Window:NewSection("Matar")
 local Posiones = Window:NewSection("Posiones")
 local FarmingSection = Window:NewSection("Farming")
 local UtilitySection = Window:NewSection("Utilidades")
-
+local AbrirHuevos = Window:NewSection("Huevos")
 local a = false
 
-Section:CreateToggle("Matar entidad", function()
+Section:CreateToggle("Snowman", function()
     a = not a
     while a do
         local args = {
@@ -21,7 +21,7 @@ Section:CreateToggle("Matar entidad", function()
     end
 end)
 
-local a, b, c, d, e, f, g, h, isFarming, antiAFK = false, false, false, false, false, false, false, false, false, false
+local a, b, c, d, e, f, g,isFarming, antiAFK = false, false, false, false, false, false, false, false, false
 Posiones:CreateToggle("Posion de suerte 1", function()
     b = not b
     while b do
@@ -171,9 +171,150 @@ local function startAntiAFK()
     end)
 end
 
-UtilitySection:CreateToggle("Anti-AFK", function(value)
+UtilitySection:CreateButton("Anti-AFK", function(value)
     antiAFK = value
     if antiAFK then
         startAntiAFK()
+    end
+end)
+local mun1,mun2,muun3,mun4,mun5,mun6,mun7,mun8,destroy = false, false, false, false, false, false, false, false, false
+AbrirHuevos:CreateToggle("Abrir huevo mundo 1", function(state)
+    mun1 = state  
+
+    if mun1 then  
+        spawn(function()  
+            while mun1 do  
+                local args = {
+                    [1] = "Egg 1x2",
+                    [2] = 1
+                }
+                
+                game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("hatch"):InvokeServer(unpack(args))
+                wait(1) 
+            end
+        end)
+        
+    end
+end)
+AbrirHuevos:CreateToggle("Abrir huevo mundo 2", function(state)
+    mun2 = state 
+
+    if mun2 then 
+        spawn(function()  
+            while mun2 do
+                local args = {
+                    [1] = "Egg 2x2",
+                    [2] = 1
+                }
+                
+                game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("hatch"):InvokeServer(unpack(args))
+                wait(1)
+            end
+        end)
+        
+    end
+end)
+AbrirHuevos:CreateToggle("Abrir huevo mundo 3", function(state)
+    mun3 = state  
+
+    if mun3 then  
+        spawn(function()  
+            while mun3 do
+                local args = {
+                    [1] = "Egg 3x2",
+                    [2] = 1
+                }
+                
+                game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("hatch"):InvokeServer(unpack(args))
+                wait(1)
+                
+            end
+        end)
+        
+    end
+end)
+AbrirHuevos:CreateToggle("Abrir huevo mundo 4", function(state)
+    mun4 = state  
+
+    if mun4 then  
+        spawn(function()  
+            while mun4 do
+                local args = {
+                    [1] = "Egg 4x2",
+                    [2] = 1
+                }
+                
+                game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("hatch"):InvokeServer(unpack(args))
+                wait(1)
+            end
+        end)
+    end
+end)
+AbrirHuevos:CreateToggle("Abrir huevo mundo 5", function(state)
+    mun5 = state  
+
+    if mun5 then  
+        spawn(function()  
+            while mun5 do
+                local args = {
+                    [1] = "Egg 5x2",
+                    [2] = 1
+                }
+                
+                game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("hatch"):InvokeServer(unpack(args))
+                wait(1)
+            end
+        end)
+    end
+end)
+AbrirHuevos:CreateToggle("Abrir huevo mundo 6", function(state)
+    mun6 = state  
+
+    if mun6 then  
+        spawn(function()  
+            while mun6 do
+                local args = {
+                    [1] = "Egg 6x2",
+                    [2] = 1
+                }
+                
+                game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("hatch"):InvokeServer(unpack(args))
+                wait(1)
+            end
+        end)
+    end
+end)
+AbrirHuevos:CreateToggle("Abrir huevo mundo 7", function(state)
+    mun7 = state  
+
+    if mun7 then  
+        spawn(function()  
+            while mun7 do
+                local args = {
+                    [1] = "Egg 7x2",
+                    [2] = 1
+                }
+                
+                game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("hatch"):InvokeServer(unpack(args))
+                wait(1)
+            end
+        end)
+    end
+end)
+AbrirHuevos:CreateToggle("Abrir huevo mundo 8", function(state)
+    mun8 = state  
+
+    if mun8 then  
+        spawn(function()  
+            while mun8 do
+                local args = {
+                    [1] = "Egg 8x2",
+                    [2] = 1
+                }
+                
+                game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("hatch"):InvokeServer(unpack(args))
+                wait(1)
+            end
+        end)
     end
 end)
