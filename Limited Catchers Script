@@ -4,106 +4,125 @@ local Window = Library:NewWindow("Test (No me pidas mucho xD)")
 local Section = Window:NewSection("Matar")
 local Posiones = Window:NewSection("Posiones")
 
-
-
 local a = false
 
 Section:CreateToggle("Matar entidad", function()
     a = not a
-        while a do
-            local args = {
-                [1] = workspace:WaitForChild("Enemies"):WaitForChild("Zone 6"),
-                [2] = Vector3.new(-0.8441810011863708, -0, 0.5360581874847412)
-            }
-    
-            game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("sendPet"):FireServer(unpack(args))
-       wait()
-        end
-    end)
-    
-local b,c,d,e,f,g,h = false
-    Posiones:CreateToggle("Posion de suerte 1", function()
-        b = not b
-            while b do
-                game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("getPotions"):InvokeServer()
-               
-                local args = {
-                    [1] = "Luck Potion"
-                }
-                
-                game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("buyPotion"):InvokeServer(unpack(args))
-                
-           wait()
-            end
-        end)
+    while a do
+        local args = {
+            [1] = workspace:WaitForChild("Enemies"):WaitForChild("Zone 6"),
+            [2] = Vector3.new(-0.8441810011863708, -0, 0.5360581874847412)
+        }
 
-        Posiones:CreateToggle("Posion de Velocidad 1", function()
-            c= not c
-                while c do
-                    game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("getPotions"):InvokeServer()
-                   
-                    local args = {
-                        [1] = "Case Speed Potion"
-                    }
-                    
-                    game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("buyPotion"):InvokeServer(unpack(args))
-                    
-                    
-               wait()
-                end
-            end)
-            Posiones:CreateToggle("Posion de Sprint 1", function()
-                d= not d
-                    while d do
-                        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("getPotions"):InvokeServer()
-                       
-                        local args = {
-                            [1] = "Sprint Potion"
-                        }
-                        
-                        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("buyPotion"):InvokeServer(unpack(args))      
-                   wait()
-                    end
-                end)
-            Posiones:CreateToggle("Haste(Fuerza) Potion 1", function()
-                    e= not e
-                        while e do
-                            game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("getPotions"):InvokeServer()
-                           
-                            local args = {
-                                [1] = "Haste Potion"
-                            }
-                            
-                            game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("buyPotion"):InvokeServer(unpack(args))
-          
-                       wait()
-                        end
-                    end)
-                    Posiones:CreateToggle("Posion de Gemas 1", function()
-                        f= not f
-                            while f do
-                                game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("getPotions"):InvokeServer()
-                               
-                                local args = {
-                                    [1] = "Gem Potion"
-                                }
-                                
-                                game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("buyPotion"):InvokeServer(unpack(args))
-                              
-                           wait()
-                            end
-                        end)
-                   Posiones:CreateToggle("Posion de Monedas 1", function()
-                            g= not g
-                                while g do
-                                    game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("getPotions"):InvokeServer()
-                                   
-                                    local args = {
-                                        [1] = "Coin Potion"
-                                    }
-                                    
-                                    game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("buyPotion"):InvokeServer(unpack(args))
-                          
-                               wait()
-                                end
-                            end)
+        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("sendPet"):FireServer(unpack(args))
+        wait()
+    end
+end)
+
+local b, c, d, e, f, g, h = false
+Posiones:CreateToggle("Posion de suerte 1", function()
+    b = not b
+    while b do
+        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("getPotions"):InvokeServer()
+
+        local args = {
+            [1] = "Luck Potion"
+        }
+
+        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("buyPotion")
+            :InvokeServer(unpack(args))
+
+        wait()
+    end
+end)
+
+Posiones:CreateToggle("Posion de Velocidad 1", function()
+    c = not c
+    while c do
+        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("getPotions"):InvokeServer()
+
+        local args = {
+            [1] = "Case Speed Potion"
+        }
+
+        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("buyPotion")
+            :InvokeServer(unpack(args))
+
+        wait()
+    end
+end)
+Posiones:CreateToggle("Posion de Sprint 1", function()
+    d = not d
+    while d do
+        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("getPotions"):InvokeServer()
+
+        local args = {
+            [1] = "Sprint Potion"
+        }
+
+        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("buyPotion")
+            :InvokeServer(unpack(args))
+        wait()
+    end
+end)
+Posiones:CreateToggle("Haste(Fuerza) Potion 1", function()
+    e = not e
+    while e do
+        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("getPotions"):InvokeServer()
+
+        local args = {
+            [1] = "Haste Potion"
+        }
+
+        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("buyPotion")
+            :InvokeServer(unpack(args))
+
+        wait()
+    end
+end)
+Posiones:CreateToggle("Posion de Gemas 1", function()
+    f = not f
+    while f do
+        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("getPotions"):InvokeServer()
+
+        local args = {
+            [1] = "Gem Potion"
+        }
+
+        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("buyPotion")
+            :InvokeServer(unpack(args))
+
+        wait()
+    end
+end)
+Posiones:CreateToggle("Posion de Monedas 1", function()
+    g = not g
+    while g do
+        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("getPotions"):InvokeServer()
+
+        local args = {
+            [1] = "Coin Potion"
+        }
+
+        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("buyPotion")
+            :InvokeServer(unpack(args))
+
+        wait()
+    end
+end)
+Posiones:CreateToggle("Posion de daño 1", function()
+    h = not h
+    while h do
+        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("getPotions"):InvokeServer()
+
+        local args = {
+            [1] = "Damage Potion"
+        }
+
+        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("buyPotion")
+            :InvokeServer(unpack(args))
+
+        wait()
+    end
+end)
+
