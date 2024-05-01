@@ -4,6 +4,7 @@ local Window = Library:NewWindow("Test (No me pidas mucho xD)")
 local Section = Window:NewSection("Matar")
 local Posiones = Window:NewSection("Posiones")
 local FarmingSection = Window:NewSection("Farming")
+local UtilitySection = Window:NewSection("Utilidades")
 
 local a = false
 
@@ -20,7 +21,7 @@ Section:CreateToggle("Matar entidad", function()
     end
 end)
 
-local b, c, d, e, f, g, h = false
+local a, b, c, d, e, f, g, h, isFarming, antiAFK = false, false, false, false, false, false, false, false, false, false
 Posiones:CreateToggle("Posion de suerte 1", function()
     b = not b
     while b do
@@ -128,31 +129,51 @@ Posiones:CreateToggle("Posion de daño 1", function()
 end)
 
 local function farmLimiteds()
-    local limiteds = workspace:WaitForChild("Farmear monedas y gemas(Lag)")
+    local limiteds = workspace:WaitForChild("Limiteds")
+
+    -- Recorre todos los objetos dentro de "Limiteds"
     for _, limited in ipairs(limiteds:GetChildren()) do
+        -- Verifica si el objeto tiene un hijo llamado "Handle"
         if limited:FindFirstChild("Handle") then
             local args = {
                 [1] = limited.Handle,
                 [2] = Vector3.new(-0.3583495020866394, -0, 0.933587908744812)
             }
 
+            -- Envía el comando para interactuar con el objeto
             game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("sendPet"):FireServer(unpack(args))
         end
     end
 end
-
-FarmingSection:CreateToggle("Farmear monedas y gemas(Puede lagear)", function(value)
+FarmingSection:CreateToggle("Farmear monedas", function(value)
     isFarming = value
 
     if isFarming then
+        -- Corre el farming cada segundo para buscar nuevos objetos
         local connection
         connection = game:GetService("RunService").Stepped:Connect(function()
             if not isFarming then
-                connection:Disconnect() 
+                connection:Disconnect()  -- Detiene el farming si se desactiva el toggle
                 return
             end
 
-            farmLimiteds()  
+            farmLimiteds()  -- Llama a la función para farmear los objetos
         end)
+    end
+end)
+
+local function startAntiAFK()
+    local vu = game:GetService("VirtualUser")
+    game:GetService("Players").LocalPlayer.Idled:Connect(function()
+        vu:Button2Down(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
+        wait(1)
+        vu:Button2Up(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
+    end)
+end
+
+UtilitySection:CreateToggle("Anti-AFK", function(value)
+    antiAFK = value
+    if antiAFK then
+        startAntiAFK()
     end
 end)
