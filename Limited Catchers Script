@@ -1,11 +1,10 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/wizard"))()
 
-local Window = Library:NewWindow("Limited Catchers!")
-local Section = Window:NewSection("Matar")
-local Posiones = Window:NewSection("Posiones")
-local FarmingSection = Window:NewSection("Farming")
-local UtilitySection = Window:NewSection("Utilidades")
-local AbrirHuevos = Window:NewSection("Huevos")
+local MainWindow = Library:NewWindow("Limited Catchers!")
+local Section = MainWindow:NewSection("Matar")
+local Posiones = MainWindow:NewSection("Posiones")
+local FarmingSection = MainWindow:NewSection("Farming")
+local UtilitySection = MainWindow:NewSection("Utilidades")
 local a = false
 
 Section:CreateToggle("Snowman", function()
@@ -177,143 +176,53 @@ UtilitySection:CreateButton("Anti-AFK", function(value)
         startAntiAFK()
     end
 end)
-local mun1,mun2,muun3,mun4,mun5,mun6,mun7,mun8,destroy = false, false, false, false, false, false, false, false, false
-AbrirHuevos:CreateToggle("Abrir huevo mundo 1", function(state)
-    mun1 = state  
 
-    if mun1 then  
-        spawn(function()  
-            while mun1 do  
-                local args = {
-                    [1] = "Egg 1x2",
-                    [2] = 1
-                }
-                
-                game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("hatch"):InvokeServer(unpack(args))
-                wait(1) 
-            end
-        end)
-        
+local EggWindow = Library:NewWindow("Abrir Huevos")
+local AbrirHuevos = EggWindow:NewSection("Huevos")
+local idMundo = 0
+local cantidadDeHuevos = 0
+
+AbrirHuevos:CreateTextbox("Número del mundo", function(text)
+    local mundo = tonumber(text) 
+    if mundo then
+        idMundo = mundo
+    else
+        idMundo = 0
     end
 end)
-AbrirHuevos:CreateToggle("Abrir huevo mundo 2", function(state)
-    mun2 = state 
 
-    if mun2 then 
-        spawn(function()  
-            while mun2 do
-                local args = {
-                    [1] = "Egg 2x2",
-                    [2] = 1
-                }
-                
-                game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("hatch"):InvokeServer(unpack(args))
-                wait(1)
-            end
-        end)
-        
+AbrirHuevos:CreateTextbox("Cantidad de huevos", function(text)
+    local cantidad = tonumber(text) 
+    if cantidad then
+        cantidadDeHuevos = cantidad
+    else
+        cantidadDeHuevos = 0
     end
 end)
-AbrirHuevos:CreateToggle("Abrir huevo mundo 3", function(state)
-    mun3 = state  
 
-    if mun3 then  
-        spawn(function()  
-            while mun3 do
-                local args = {
-                    [1] = "Egg 3x2",
-                    [2] = 1
-                }
-                
-                game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("hatch"):InvokeServer(unpack(args))
-                wait(1)
-                
-            end
-        end)
-        
-    end
-end)
-AbrirHuevos:CreateToggle("Abrir huevo mundo 4", function(state)
-    mun4 = state  
+local toggleActivo = false
 
-    if mun4 then  
-        spawn(function()  
-            while mun4 do
-                local args = {
-                    [1] = "Egg 4x2",
-                    [2] = 1
-                }
-                
-                game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("hatch"):InvokeServer(unpack(args))
-                wait(1)
-            end
-        end)
-    end
-end)
-AbrirHuevos:CreateToggle("Abrir huevo mundo 5", function(state)
-    mun5 = state  
+AbrirHuevos:CreateToggle("Abrir huevos", function(state)
+    toggleActivo = state
 
-    if mun5 then  
-        spawn(function()  
-            while mun5 do
-                local args = {
-                    [1] = "Egg 5x2",
-                    [2] = 1
-                }
-                
-                game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("hatch"):InvokeServer(unpack(args))
-                wait(1)
-            end
-        end)
-    end
-end)
-AbrirHuevos:CreateToggle("Abrir huevo mundo 6", function(state)
-    mun6 = state  
+    if toggleActivo then
+        spawn(function()
+            while toggleActivo do
+                if idMundo > 0 and cantidadDeHuevos > 0 then
+                    for i = 1, cantidadDeHuevos do
+                        local nombreHuevo = "Egg " .. idMundo .. "x2"
+                        local args = {
+                            [1] = nombreHuevo,
+                            [2] = 1
+                        }
+                        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("hatch"):InvokeServer(unpack(args))
 
-    if mun6 then  
-        spawn(function()  
-            while mun6 do
-                local args = {
-                    [1] = "Egg 6x2",
-                    [2] = 1
-                }
-                
-                game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("hatch"):InvokeServer(unpack(args))
-                wait(1)
-            end
-        end)
-    end
-end)
-AbrirHuevos:CreateToggle("Abrir huevo mundo 7", function(state)
-    mun7 = state  
-
-    if mun7 then  
-        spawn(function()  
-            while mun7 do
-                local args = {
-                    [1] = "Egg 7x2",
-                    [2] = 1
-                }
-                
-                game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("hatch"):InvokeServer(unpack(args))
-                wait(1)
-            end
-        end)
-    end
-end)
-AbrirHuevos:CreateToggle("Abrir huevo mundo 8", function(state)
-    mun8 = state  
-
-    if mun8 then  
-        spawn(function()  
-            while mun8 do
-                local args = {
-                    [1] = "Egg 8x2",
-                    [2] = 1
-                }
-                
-                game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("hatch"):InvokeServer(unpack(args))
-                wait(1)
+                        wait(0.1)
+                    end
+                else
+                    print("Error")
+                end
+                wait(0.1)
             end
         end)
     end
