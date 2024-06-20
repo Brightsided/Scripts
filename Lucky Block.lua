@@ -15,10 +15,11 @@ local areaCoordinates = {
     [3] = Vector3.new(24.1456089, -34.8214111, -130.703033),
     [4] = Vector3.new(24.1456089, -34.8214111, -200.630798),
     [5] = Vector3.new(24.1456089, -34.8214111, -270.558441),
-    [6] = Vector3.new(4.18446541, -34.2809563, -344.920197)
+    [6] = Vector3.new(4.18446541, -34.2809563, -344.920197),
+    [7] = Vector3.new(4.18446541, -34.2809563, -414.847748) -- Example coordinates for Area 7
 }
 
-for area = 1, 6 do
+for area = 1, 7 do
     local buttonName = "Area " .. area
     toggleStates[area] = false
     
@@ -54,7 +55,8 @@ local hatchToggleStates = {
     ["Crowned Egg"] = false,
     ["ForceField Egg"] = false,
     ["Neon Egg"] = false,
-    ["Rare Egg"] = false
+    ["Rare Egg"] = false,
+    ["Rich Egg"] = false -- New egg added
 }
 
 local function hatchEgg(eggName)
