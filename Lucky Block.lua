@@ -16,10 +16,11 @@ local areaCoordinates = {
     [4] = Vector3.new(24.1456089, -34.8214111, -200.630798),
     [5] = Vector3.new(24.1456089, -34.8214111, -270.558441),
     [6] = Vector3.new(4.18446541, -34.2809563, -344.920197),
-    [7] = Vector3.new(4.18446541, -34.2809563, -414.847748) -- Example coordinates for Area 7
+    [7] = Vector3.new(4.18446541, -34.2809563, -414.847748), -- Example coordinates for Area 7
+    [8] = Vector3.new(3.49069142, -33.8389282, -481.339081)
 }
 
-for area = 1, 7 do
+for area = 1, 8 do
     local buttonName = "Area " .. area
     toggleStates[area] = false
     
@@ -40,6 +41,15 @@ for area = 1, 7 do
                             print("ClickDetector not found for " .. buttonName .. " - LuckyBlock" .. block)
                         end
                     end
+                    -- Click the Lucky Block Boss in Area 8
+                    if area == 8 then
+                        local bossPath = workspace:FindFirstChild("BreakablesByArea"):FindFirstChild("Breakables8"):FindFirstChild("LuckyBlockBoss"):FindFirstChild("Bubbles"):FindFirstChild("ClickDetector")
+                        if bossPath then
+                            fireclickdetector(bossPath)
+                        else
+                            print("ClickDetector not found for Area 8 - LuckyBlockBoss")
+                        end
+                    end
                     -- Add a small delay to prevent excessive load on the server
                     wait(0.1)
                 end
@@ -56,7 +66,9 @@ local hatchToggleStates = {
     ["ForceField Egg"] = false,
     ["Neon Egg"] = false,
     ["Rare Egg"] = false,
-    ["Rich Egg"] = false -- New egg added
+    ["Rich Egg"] = false,
+    ["Snow Egg"] = false,
+    ["Golden Snow Egg"] = false -- New egg added
 }
 
 local function hatchEgg(eggName)
