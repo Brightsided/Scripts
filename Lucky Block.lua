@@ -16,7 +16,7 @@ local areaCoordinates = {
     [4] = Vector3.new(24.1456089, -34.8214111, -200.630798),
     [5] = Vector3.new(24.1456089, -34.8214111, -270.558441),
     [6] = Vector3.new(4.18446541, -34.2809563, -344.920197),
-    [7] = Vector3.new(4.18446541, -34.2809563, -414.847748), -- Example coordinates for Area 7
+    [7] = Vector3.new(4.18446541, -34.2809563, -414.847748),
     [8] = Vector3.new(3.49069142, -33.8389282, -481.339081)
 }
 
@@ -43,7 +43,7 @@ for area = 1, 8 do
                     end
                     -- Click the Lucky Block Boss in Area 8
                     if area == 8 then
-                        local bossPath = workspace:FindFirstChild("BreakablesByArea"):FindFirstChild("Breakables8"):FindFirstChild("LuckyBlockBoss"):FindFirstChild("Bubbles"):FindFirstChild("ClickDetector")
+                        local bossPath = workspace:FindFirstChild("BreakablesByArea"):FindFirstChild("Breakables8"):FindFirstChild("LuckyBlockBoss"):FindFirstChild("ClickDetector")
                         if bossPath then
                             fireclickdetector(bossPath)
                         else
