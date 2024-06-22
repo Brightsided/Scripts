@@ -102,3 +102,7 @@ end)
 UtilidadesSection:CreateButton("Rejoin", function()
     game:GetService("TeleportService"):Teleport(game.PlaceId, game:GetService("Players").LocalPlayer)
 end)
+UtilidadesSection:CreateButton("Rebirth", function()
+    game:GetService("ReplicatedStorage"):WaitForChild("Modules"):WaitForChild("MainModule"):WaitForChild("SendData"):FireServer(unpack(args))
+end)
+
