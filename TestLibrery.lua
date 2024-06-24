@@ -13,37 +13,37 @@ function Library:CreateWindow(title)
         function section:CreateButton(text, callback)
             local button = { type = "Button", text = text, callback = callback }
             table.insert(section.elements, button)
-            -- Código para crear el botón
+            callback()  -- Ejecutar la función de callback para probar
         end
 
         function section:CreateTextbox(placeholder, callback)
             local textbox = { type = "Textbox", placeholder = placeholder, callback = callback }
             table.insert(section.elements, textbox)
-            -- Código para crear el cuadro de texto
+            callback(placeholder)  -- Ejecutar la función de callback para probar
         end
 
         function section:CreateToggle(text, callback)
             local toggle = { type = "Toggle", text = text, callback = callback }
             table.insert(section.elements, toggle)
-            -- Código para crear el alternador
+            callback(true)  -- Ejecutar la función de callback para probar
         end
 
         function section:CreateDropdown(text, items, default, callback)
             local dropdown = { type = "Dropdown", text = text, items = items, default = default, callback = callback }
             table.insert(section.elements, dropdown)
-            -- Código para crear el menú desplegable
+            callback(items[default])  -- Ejecutar la función de callback para probar
         end
 
         function section:CreateSlider(text, min, max, default, isInt, callback)
             local slider = { type = "Slider", text = text, min = min, max = max, default = default, isInt = isInt, callback = callback }
             table.insert(section.elements, slider)
-            -- Código para crear el deslizador
+            callback(default)  -- Ejecutar la función de callback para probar
         end
 
         function section:CreateColorPicker(text, default, callback)
             local colorpicker = { type = "ColorPicker", text = text, default = default, callback = callback }
             table.insert(section.elements, colorpicker)
-            -- Código para crear el selector de color
+            callback(default)  -- Ejecutar la función de callback para probar
         end
 
         table.insert(window.sections, section)
@@ -52,3 +52,5 @@ function Library:CreateWindow(title)
 
     return window
 end
+
+return Library
