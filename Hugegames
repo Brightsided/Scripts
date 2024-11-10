@@ -1,5 +1,0 @@
-getgenv().AuthKey = "HUGE_698XvIDpTJqI"
-getgenv().LoadSettings = {
-    Example_Setting = Example_Value
-}
-loadstring(game:HttpGet("https://HugeGames.io/ps99"))()
